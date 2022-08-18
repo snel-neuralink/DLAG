@@ -10,8 +10,8 @@ This project contains a Matlab implementation of DLAG, a dimensionality reductio
 The DLAG model, along with learning and inference procedures, are described in
 detail in the following reference:
 
-- Gokcen, E., Jasper, A. I., Semedo, J. D., Zandvakili, A., Kohn, A., Machens, C. K. & Yu, B. M. 
-Disentangling the flow of signals between populations of neurons. Preprint at https://doi.org/10.1101/2021.08.30.458230 (2021).
+- Gokcen, E., Jasper, A. I., Semedo, J. D., Zandvakili, A., Kohn, A., Machens, C. K. & Yu, B. M.
+Disentangling the flow of signals between populations of neurons. Nature Computational Science 2, 512–525 (2022). https://doi.org/10.1038/s43588-022-00282-5
 
 Please read it carefully before using the code, as it describes all of the
 terminology and usage modes. Please cite the above reference if using any
