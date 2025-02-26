@@ -1,4 +1,4 @@
-function plotDimsVsTime_dlag(seq, xspec, params, binWidth, varargin)
+function plotDimsVsTime_dlag(seq, xspec, params, binWidth, savepath, varargin)
 %
 % plotDimsVsTime_dlag(seq, xspec, binWidth, varargin)
 %
@@ -140,13 +140,11 @@ for groupIdx = 1:numGroups
     [seqAcross, seqWithin] = partitionLatents_meanOnly(groupSeq{groupIdx}, ...
         xDim_across, xDim_within(groupIdx), 'xspec', xspec);
     
-    % % save the results
-    % savepath_tmp = fullfile(savepath,"/",num2str(groupIdx));
-    % if ~exist(savepath_tmp, 'dir')
-    %     mkdir(savepath_tmp)
-    % end
-    % savepath_mat = fullfile(savepath_tmp, 'dlag_results.mat');
-    % save(savepath_mat, "seqAcross", "seqWithin", "DelayMatrix")
+    % save the results
+    savepath = fullfile(savepath,groupIdx, "dlag_results.mat");
+    if ~exist(dir(savepath), 'dir')
+        mkdir(dir(savepath))
+    save(savepath, "seqAcross", "seqWithin", "DelayMatrix")
     % Initialize plotIdx to first column of the current row
     plotIdx = (groupIdx-1)*nCols;
     

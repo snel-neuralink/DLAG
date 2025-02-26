@@ -82,6 +82,7 @@ precomp.Rinv = Rinv;
 precomp.logdet_R = logdet_R;
 precomp.CRinv = CRinv;
 precomp.CRinvC = CRinvC;
+precomp.C = params.C;
 
 % Group trials of same length together
 Tall = [seq.T];
@@ -92,7 +93,10 @@ for j = 1:length(Tu)
     % Process all trials with length T
     nList    = find(Tall == T);
     dif      = bsxfun(@minus, [seq(nList).y], params.d); % yDim x sum(T)
-    term1Mat = reshape(CRinv * dif, mp*T, []); % (xDim*numGroups*T) x length(nList)
+    %%%%%%%%%%%%%%%%%%%%%%%%5 Changed Code %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    term1Mat = reshape(params.C' * dif, mp*T, []);
+    % term1Mat = reshape(CRinv * dif, mp*T, []); % (xDim*numGroups*T) x length(nList)
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
     % Collect outputs
     precomp.Tu(j).dif = dif;
     precomp.Tu(j).term1Mat = term1Mat;    
